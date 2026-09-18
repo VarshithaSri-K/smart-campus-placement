@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard - CampusPlace{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="stats-grid" id="stats-grid"></div>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="postings">Job Postings</button>
+    <button class="tab-btn" data-tab="applications">Applications</button>
+    <button class="tab-btn" data-tab="students">Students</button>
+  </div>
+
+  <div id="alert-box"></div>
+
+  <div class="tab-panel active" id="panel-postings">
+    <div class="card-title-row">
+      <h3 class="mt-0">All Job Postings</h3>
+      <button class="btn btn-primary btn-sm" id="new-job-btn">+ New Job Posting</button>
+    </div>
+    <div id="admin-jobs-list"></div>
+  </div>
+
+  <div class="tab-panel" id="panel-applications">
+    <div class="card">
+      <div class="form-row" style="align-items:flex-end;">
+        <div class="form-group">
+          <label>Filter by Job</label>
+          <select id="app-job-filter"><option value="">All jobs</option></select>
+        </div>
+        <div class="form-group">
+          <label>Filter by Status</label>
+          <select id="app-status-filter">
+            <option value="">All statuses</option>
+            <option>Applied</option><option>Shortlisted</option><option>Interview</option>
+            <option>Rejected</option><option>Selected</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div id="admin-applications-list"></div>
+  </div>
+
+  <div class="tab-panel" id="panel-students">
+    <div id="admin-students-list"></div>
+  </div>
+</div>
+
+<!-- New Job Modal -->
+<div class="modal-overlay" id="job-modal-overlay">
+  <div class="modal">
+    <button class="modal-close" id="job-modal-close">&times;</button>
+    <h3>Post a New Job</h3>
+    <form id="job-form">
+      <div class="form-row">
+        <div class="form-group"><label>Job Title</label><input type="text" id="j-title" required></div>
+        <div class="form-group"><label>Company Name</label><input type="text" id="j-company" required></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Job Type</label>
+          <select id="j-type"><option>Full-Time</option><option>Internship</option><option>PPO</option></select>
+        </div>
+        <div class="form-group"><label>Location</label><input type="text" id="j-location"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Package (LPA)</label><input type="number" id="j-package" step="0.1" min="0"></div>
+        <div class="form-group"><label>Application Deadline</label><input type="date" id="j-deadline"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Minimum CGPA</label><input type="number" id="j-mincgpa" step="0.01" min="0" max="10" value="0"></div>
+        <div class="form-group"><label>Max Allowed Backlogs</label><input type="number" id="j-maxbacklogs" min="0" value="0"></div>
+      </div>
+      <div class="form-group">
+        <label>Allowed Branches (comma-separated, blank = all branches)</label>
+        <input type="text" id="j-branches" placeholder="CSE, IT, ECE">
+      </div>
+      <div class="form-group">
+        <label>Required Skills (comma-separated)</label>
+        <input type="text" id="j-skills" placeholder="Python, SQL, Flask">
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea id="j-description" rows="3"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%">Post Job</button>
+    </form>
+  </div>
+</div>
+
+<!-- Candidate ranking modal -->
+<div class="modal-overlay" id="candidates-modal-overlay">
+  <div class="modal" style="max-width:720px">
+    <button class="modal-close" id="candidates-modal-close">&times;</button>
+    <h3 id="candidates-modal-title">Ranked Candidates</h3>
+    <div id="candidates-list"></div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+{% endblock %}

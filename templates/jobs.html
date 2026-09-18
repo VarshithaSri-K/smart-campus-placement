@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Browse Jobs - CampusPlace{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="card-title-row">
+    <h2 class="mt-0">Open Positions</h2>
+  </div>
+  <div id="alert-box"></div>
+  <div id="jobs-list"></div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/jobs.js') }}"></script>
+{% endblock %}

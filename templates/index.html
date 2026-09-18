@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Smart Campus Placement System{% endblock %}
+{% block content %}
+<section class="hero">
+  <h1>Smart Campus Placement &amp; Recommendation System</h1>
+  <p>One platform for student profiles, job postings, eligibility screening and skill-based
+     placement recommendations — connecting students with the right opportunities.</p>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="/register">Get Started as Student</a>
+    <a class="btn btn-secondary" href="/login">Sign In</a>
+  </div>
+</section>
+
+<section class="features">
+  <div class="feature-card">
+    <h3>🎯 Skill Matching</h3>
+    <p>A weighted algorithm scores each student against job requirements using skills,
+       CGPA and branch fit, so recommendations are ranked, not just listed.</p>
+  </div>
+  <div class="feature-card">
+    <h3>✅ Eligibility Screening</h3>
+    <p>Automatic checks on minimum CGPA, backlog limits and branch eligibility before
+       a student can apply — no manual shortlisting errors.</p>
+  </div>
+  <div class="feature-card">
+    <h3>📊 Placement Dashboard</h3>
+    <p>Admins get a real-time view of postings, applications, and candidate rankings
+       per job, powered by REST APIs.</p>
+  </div>
+</section>
+{% endblock %}

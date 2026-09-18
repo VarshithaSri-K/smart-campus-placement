@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Sign In - CampusPlace{% endblock %}
+{% block content %}
+<div class="auth-wrapper">
+  <div class="auth-card">
+    <h2 class="mt-0">Welcome back</h2>
+    <p class="sub">Sign in to your student or placement-officer account.</p>
+    <div id="alert-box"></div>
+    <form id="login-form">
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="email" required placeholder="you@campus.edu">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="password" required placeholder="••••••••">
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%">Sign In</button>
+    </form>
+    <p class="muted" style="margin-top:18px">
+      New here? <a href="/register">Create a student account</a>
+    </p>
+    <p class="muted" style="font-size:0.8rem">
+      Admin demo login is configured via environment variables (see README).
+    </p>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+{% endblock %}
